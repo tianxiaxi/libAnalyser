@@ -62,7 +62,7 @@ class libAnalyser(object):
         return True
 
     # extra all python packages from the path
-    def getPackages(self, path, ignore_file_list = True, ignore_local_module = True, ignore_stdanrd_package = True):
+    def getPackages(self, path, ignore_file_list = True, ignore_local_module = True, ignore_standard_package = True):
         src_file_package_dict = {}
         package_list = []
         source_file_list = []
@@ -75,7 +75,7 @@ class libAnalyser(object):
                     source_file_list.append(os.path.splitext(f)[0])
 
                     src_file = os.path.join(root, f)
-                    plist = self.__getpackage(src_file, ignore_stdanrd_package)
+                    plist = self.__getpackage(src_file, ignore_standard_package)
                     if plist:
                         src_file_package_dict[os.path.relpath(src_file, path)] = plist
                         [ package_list.append(x) for x in plist if x not in package_list ]
@@ -129,7 +129,7 @@ class libAnalyser(object):
             print('  %s' % str(src_file_package_dict[file]))
         return
 
-    def __getpackage(self, file, ignore_stdanrd_package = True):
+    def __getpackage(self, file, ignore_standard_package = True):
         package_list = []
         if not os.path.exists(file):
             return package_list
@@ -156,7 +156,7 @@ class libAnalyser(object):
                     if -1 != pos:
                         md = md[:pos]
 
-                    if ignore_stdanrd_package and self.stdandPackage(md):
+                    if ignore_standard_package and self.standardPackage(md):
                         continue
                     package_list.append(md)
 
