@@ -5,7 +5,7 @@ from distutils.core import setup
 
 setup(
     name            = 'libAnalyser',
-    version         = '0.0.1',
+    version         = '0.0.2',
     author          = 'zanran',
     author_email    = 'wayne@zanran.me',
     url             = 'https://github.com/tianxiaxi/libAnalyser',
